@@ -1,0 +1,22 @@
+# 2008132_Anthonio Akbar_Pendidikan-Ilmu-Komputer_5A
+# Metode Newton Raphson
+
+x0 = 4.5
+f  = lambda x: (x**2) - (2*x) - 8   # Lambda x berfungsi untuk menggantikan x dalam fungsi f dengan nilai lain, (Contohnya seperti: f(3), berarti (3**2) - (2*3) - 8)
+df = lambda x: (2*x) - 2
+
+for i in range (1,100) :    # Iterasi akan mengulang sebanyak 100 kali terhitung sejak 1
+    print('   |Iterasi Ke-%i|'%i)   # Perintah untuk print iterasi ke berapa
+    print('x0     = %.3f'%x0)       # Print x0
+    x1 = round( (x0-(f(x0)/df(x0))) , 3 )   # Menghitung x1 dengan langsung pembulatan 3 angka di belakang koma (fungsi round)
+    print('x1     = %.3f'%x1)       # Print x1
+    print('f(x0)  = %.3f'%f(x0))    # Print f(x0), x yang ada di fungsi f diganti dengan x0 (fungsi lambda)
+    print('df(x0) = %.3f'%df(x0))   # Print df(x0), x yang ada di fungsi df diganti dengan x0 (fungsi lambda)
+    print('|(x1-x0)/x1| = ',round(abs((x1-x0)/x1), 3))  # Print |[x1-x0]/x1| dengan langsung pembulatan dan mutlak (round = pembulatan, abs = mutlak)
+    print('-'*21)   # Print - sebanyak 21 kali
+    if f(x0) == 0:  # Jika nilai f(x0) nya sudah 0, maka iterasi dihentikan
+        break
+    else :          # Jika nilai f(x0) nya belum 0, maka x0 nya diganti dengan x1, dan iterasi masih berlanjut karena tidak 'break'
+        x0 = x1
+
+print('Total iterasi = ',i)
